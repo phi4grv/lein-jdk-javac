@@ -1,10 +1,17 @@
 (ns leiningen.jdk-javac
   (:require [clojure.string :as string]
-            [leiningen.classpath :as classpath]
+            [clojure.java.io :as io]
+            [leiningen.core.classpath :as classpath]
             [leiningen.core.eval :as eval]
             [leiningen.core.main :as main]
             [leiningen.core.project :as project])
   (:import javax.tools.ToolProvider))
+
+(defn- get-classpath [project]
+  (let [classpath (classpath/get-classpath project)]
+    (string/join
+      java.io.File/pathSeparatorChar
+      (filter #(.exists (io/as-file %)) classpath))))
 
 (defn- javac-args-array
   [project args]
@@ -15,7 +22,7 @@
       String
       (concat
         (:javac-options project)
-        ["-cp" (classpath/get-classpath-string project)
+        ["-cp" (get-classpath project)
          "-d" (:compile-path project)
          "-sourcepath" source-path]
         args))))
