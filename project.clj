@@ -1,6 +1,7 @@
-(defproject jdk-javac "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+(defproject phi4grv/lein-jdk-javac "GIT-VERSION"
+  :description "Leiningen plugin to run jdk javac"
+  :eval-in-leiningen true
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :eval-in-leiningen true)
+  :plugins [[org.clojars.langmartin/lein-git-version "1.2.2"]]
+  :url "https://github.com/phi4grv/lein-jdk-javac")

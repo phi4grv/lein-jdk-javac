@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+
+docker-compose-command() {
+    if [ -f docker-compose.local.yml ]; then
+        set -- -f docker-compose.local.yml "$@"
+    fi
+    set -- -f docker-compose.yml "$@"
+    docker-compose "$@"
+}
+
+down() {
+    docker-compose-command down
+}
+
+lein() {
+    docker-compose-command run --rm lein "$@"
+}
+
+repl() {
+    docker-compose-command run --rm --service-ports repl
+}

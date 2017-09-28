@@ -1,0 +1,18 @@
+version: '3'
+services:
+  lein: &lein
+    entrypoint: lein
+    environment:
+      - HOME
+      - _JAVA_OPTIONS=-Duser.home=${HOME}
+    image: ${CLOJURE_LEIN_IMAGE}
+    volumes:
+      - ${HOME}/.m2:${HOME}/.m2
+      - ${PWD}:${PWD}
+    working_dir: ${PWD}
+
+  repl:
+    <<: *lein
+    command: repl :start :host 0.0.0.0 :port ${REPL_PORT}
+    ports:
+      - ${REPL_PORT}:${REPL_PORT}
