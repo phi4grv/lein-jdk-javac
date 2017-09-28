@@ -1,25 +1,19 @@
-# jdk-javac
+# lein-jdk-javac
 
-A Leiningen plugin to do many wonderful things.
+A Leiningen plugin to run javac
 
 ## Usage
 
-FIXME: Use this for user-level plugins:
+Put `[phi4grv/lein-jdk-javac "0.1.0"]` into the `:plugins` vector of your `:user`
+profile or `project.clj`.
 
-Put `[jdk-javac "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `:user`
-profile.
-
-FIXME: Use this for project-level plugins:
-
-Put `[jdk-javac "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your project.clj.
-
-FIXME: and add an example usage that actually makes sense:
-
-    $ lein jdk-javac
+```
+$ lein jdk-javac -Xlint javasrc/package/Example.java
+```
 
 ## License
 
-Copyright © 2017 FIXME
+Copyright © 2017
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
