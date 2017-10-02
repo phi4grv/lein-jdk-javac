@@ -13,7 +13,7 @@
       java.io.File/pathSeparatorChar
       (filter #(.exists (io/as-file %)) classpath))))
 
-(defn- javac-args-array
+(defn javac-args-array
   [project args]
   (let [source-path (string/join
                       (System/getProperty "path.separator")
